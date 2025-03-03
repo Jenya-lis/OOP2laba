@@ -14,9 +14,9 @@ public:
 		type= " ";
 		color= " ";
 	}
-	Animal(int weight, string type, string color)
+	Animal(int weight,string type, string color)
 	{
-		cout<< "Animal(int weight, string type, string color)\n";
+		cout<< "Animal(int weight,string type, string color)\n";
 		this ->weight= weight;
 		this ->type= type;
 		this ->color= color;
@@ -31,16 +31,17 @@ public:
 	~Animal()
 	{
 		cout << "~Animal()\n";
-		cout << weight <<   " " << type << " " << color << endl;
+		cout << weight << " " << type << " " << color << endl;
 	}
 };
 int main()
 {
-	{
-		Animal n1;
-		Animal n2(5, "cat","brown");
-		Animal n3(n2);
-	}
+		Animal *n1= new Animal;
+		Animal *n2= new Animal(5, "cat","brown");
+		Animal* n3= new Animal(*n2);
+		delete n1;
+		delete n2;
+		delete n3;
 		cin.get();
 		return 0;
 	

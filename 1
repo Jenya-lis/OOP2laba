@@ -1,7 +1,9 @@
+
 #include "stdafx.h"
 #include <string>
 #include <iostream>
 using namespace std;
+
 class Animal
 {
 protected:
@@ -48,47 +50,45 @@ void Animal::change()
 	color = "white";
 }
 
-class Skills: public Animal
+class Insect
 {
 public:
-	string skil;
-	Skills(): Animal()
+	Animal* n1;
+	
+	Insect()
 	{
-		cout<< "Skills(): Animal()\n";
-		skil = " ";
+		cout<< "Insect\n";
+		n1 = new Animal;
 	}
-	Skills(int weight,string type, string color, string skil):Animal( weight, type, color)
+	Insect(int weight1,string type1, string color1)
 	{
-		cout<< "Skills(int weight,string type, string color, string skil):Animal( weight, type, color)\n";
-		this ->skil= skil;
+		cout<< "Insect(int weight1,string type1, string color1)\n";
+		n1 = new Animal (weight1,type1,color1);
 	}
-	Skills(const Skills& p)
+	Insect(const Insect& p)
 	{
-		cout<< "Skills(const Skills &p)\n";
-		skil= p.skil;
-		weight= p.weight;
-		type= p.type;
-		color= p.color;
+		cout<< "Insect(const Insect& p)\n";
+		n1 = new Animal(*(p.n1));
 		
 	}
-	~Skills()
+	~Insect()
 	{
-		cout << "~Skills()\n";
-		cout << "weight: " << weight << " ,type: " << type << " ,color: " << color << " ,skil: " << skil << endl;
+		cout << "~Insect()\n";
+		delete n1;
 	}
-void change_skil (string new_skil)
-	{
-		skil = new_skil;
-	}
-
 };
-
+void Animal::change()
+{
+	weight = 8;
+	type = "hare";
+	color = "white";
+}
 int main()
 {
-		Skills *k= new Skills(2, "bird","black","jump");
-		Animal *k2= new Skills(2, "bird","black","jump");
-		delete k;
+		Insect *k2 = new Insect;
+		Insect* k3= new Insect(*k2);
 		delete k2;
+		delete k3;
 		cin.get();
 		return 0;
 }

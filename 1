@@ -82,10 +82,12 @@ void change_skil (string new_skil)
 	}
 
 };
+
 int main()
 {
-		Skills k1;
-		Skills *k2= new Skills(2, "bird","black","jump");
+		Skills *k= new Skills(2, "bird","black","jump");
+		Animal *k2= new Skills(2, "bird","black","jump");
+		delete k;
 		delete k2;
 		cin.get();
 		return 0;
